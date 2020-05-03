@@ -1,17 +1,15 @@
 <idea-plugin>
   <id>ru.itmo.plugins.translator</id>
-  <name>Plugin display name here</name>
+  <name>Translator IDEA</name>
   <version>1.0</version>
-  <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+  <vendor email="dogandmouse@ourcompany.com" url="http://www.dogandmousecompany.com">DogAndMouseCompany</vendor>
 
   <description><![CDATA[
-      Enter short description for your plugin here.<br>
-      <em>most HTML tags may be used</em>
+      Translator from Russian to English for IDEA.<br>
     ]]></description>
 
   <change-notes><![CDATA[
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>
+      aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.<br>
     ]]>
   </change-notes>
 
