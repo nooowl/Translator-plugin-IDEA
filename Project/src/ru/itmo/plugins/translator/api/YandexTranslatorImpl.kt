@@ -47,9 +47,3 @@ class YandexTranslatorImpl : YandexTranslator {
         return URL(request)
     }
 }
-
-
-fun main() {
-    val result = YandexTranslatorImpl().translate("en", "Пёс дурак!")
-    print(result)
-}
