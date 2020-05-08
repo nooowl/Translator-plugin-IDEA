@@ -1,33 +1,37 @@
 <idea-plugin>
-  <id>ru.itmo.plugins.translator</id>
-  <name>Translator IDEA</name>
-  <version>1.0</version>
-  <vendor email="dogandmouse@ourcompany.com" url="http://www.dogandmousecompany.com">DogAndMouseCompany</vendor>
+    <id>ru.itmo.plugins.translator</id>
+    <name>Translator IDEA</name>
+    <version>1.0</version>
+    <vendor email="dogandmouse@ourcompany.com" url="http://www.dogandmousecompany.com">DogAndMouseCompany</vendor>
 
-  <description><![CDATA[
+    <description><![CDATA[
       Translator from Russian to English for IDEA.<br>
     ]]></description>
 
-  <change-notes><![CDATA[
+    <change-notes><![CDATA[
       aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.<br>
     ]]>
-  </change-notes>
+    </change-notes>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-  <idea-version since-build="173.0"/>
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="173.0"/>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-       on how to target different products -->
-  <!-- uncomment to enable plugin in all products
-  <depends>com.intellij.modules.lang</depends>
-  -->
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
 
-  <extensions defaultExtensionNs="com.intellij">
-    <!-- Add your extensions here -->
-  </extensions>
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
 
-  <actions>
-    <!-- Add your actions here -->
-  </actions>
+    <actions>
+        <!-- Add your actions here -->
+        <action class="ru.itmo.plugins.translator.actions.TranslateAction" id="TranslateAction" text="Translate">
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+            <keyboard-shortcut first-keystroke="shift ctrl F6" keymap="$default"/>
+        </action>
+    </actions>
 
 </idea-plugin>

@@ -9,16 +9,7 @@ import java.util.*
 
 class YandexTranslatorImpl : YandexTranslator {
     private val apiUrl: String = "https://translate.yandex.net/api/v1.5/tr.json/translate"
-    private val apiKey: String
-
-    init {
-        val properties = Properties()
-        properties.load(FileInputStream("resources/api.properties"))
-        apiKey = when (val tmp: String? = System.getenv("apiKey")) {
-            null -> properties.getProperty("apiKey")
-            else -> tmp
-        }
-    }
+    private val apiKey: String = ""
 
     override fun translate(language: String, text: String): String {
         val requestURL = createRequestURL(mapOf("lang" to language, "text" to text))
