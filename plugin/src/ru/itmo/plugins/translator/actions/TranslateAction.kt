@@ -23,7 +23,7 @@ class TranslateAction : AnAction() {
 
         val psiNamedElem = getPsiElementArray(dataContext)[0] as PsiNamedElement
         val originalName = psiNamedElem.name!!
-        val translatedName = smartTranslator.translate(originalName)
+        val translatedName = smartTranslator.translateCode(originalName)
         val editor: Editor = e.getData(CommonDataKeys.EDITOR)!!
 
         RenameDialog(project, psiNamedElem, psiNamedElem, editor).performRename(translatedName)
