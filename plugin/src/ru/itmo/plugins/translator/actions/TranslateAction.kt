@@ -8,12 +8,16 @@ import com.intellij.psi.PsiDocumentManager
 import com.intellij.psi.PsiNamedElement
 import com.intellij.refactoring.actions.BaseRefactoringAction.getPsiElementArray
 import com.intellij.refactoring.rename.RenameDialog
+import ru.itmo.plugins.translator.api.YandexTranslatorImpl
+import ru.itmo.plugins.translator.constants.YANDEX_API_KEY
 import ru.itmo.plugins.translator.source.SmartCodeTranslator
 import ru.itmo.plugins.translator.source.SmartCodeTranslatorImpl
 
 
 class TranslateAction : AnAction() {
-    private val smartTranslator : SmartCodeTranslator = SmartCodeTranslatorImpl()
+    private val smartTranslator : SmartCodeTranslator = SmartCodeTranslatorImpl(
+            YandexTranslatorImpl(YANDEX_API_KEY)
+    )
 
     override fun actionPerformed(e: AnActionEvent) {
         val project = e.project ?: return
