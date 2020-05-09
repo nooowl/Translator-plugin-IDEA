@@ -8,9 +8,19 @@ class SmartCodeTranslatorImpl(
     : SmartCodeTranslator {
 
     override fun translateCode(code: String, lang: String): String {
-        val words = code.split("_")
+        val words = mySplit(code).split("_")
         val translatedWords = words.map { s -> yandexTranslator.translate(lang, s) }
 
-        return translatedWords.joinToString(separator = "_")
+        return translatedWords.joinToString(separator = "_").replace(" ", "")
+    }
+
+    private fun mySplit(text: String): String {
+        var words = text
+        for (i in 0..words.length - 2) {
+            if (text[i].isLowerCase() && text[i + 1].isUpperCase()) {
+                words = words.replaceRange(i, i + 1, "${text[i]}${text[i + 1]}")
+            }
+        }
+        return words
     }
 }
