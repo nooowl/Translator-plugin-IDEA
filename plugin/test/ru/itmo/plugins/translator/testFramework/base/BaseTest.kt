@@ -16,20 +16,6 @@ open class BaseTest {
         @JvmStatic
         var smartCodeTranslator: SmartCodeTranslator = SmartCodeTranslatorImpl(yandexTranslator)
         @JvmStatic
-        lateinit var logger: Logger
-
-        @BeforeClass
-        fun setUp() {
-            logger = Logger
-            logger.debug("Logger initialized")
-            logger.info("Starting tests up...")
-        }
-
-        @AfterClass
-        fun tearDown() {
-            logger.info("Tests are finished")
-            logger.debug("Logger closed")
-            logger.close()
-        }
+        var logger: Logger = Logger
     }
 }
