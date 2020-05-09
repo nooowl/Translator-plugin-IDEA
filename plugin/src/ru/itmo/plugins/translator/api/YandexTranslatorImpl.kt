@@ -7,9 +7,16 @@ import java.net.URL
 import java.net.URLEncoder
 import java.util.*
 
-class YandexTranslatorImpl : YandexTranslator {
+class YandexTranslatorImpl(
+        private var apiKey: String = ""
+) : YandexTranslator {
     private val apiUrl: String = "https://translate.yandex.net/api/v1.5/tr.json/translate"
-    private val apiKey: String = ""
+
+    init {
+        if (apiKey.isEmpty()) {
+            apiKey = System.getenv("yandexApiKey")
+        }
+    }
 
     override fun translate(language: String, text: String): String {
         val requestURL = createRequestURL(mapOf("lang" to language, "text" to text))
