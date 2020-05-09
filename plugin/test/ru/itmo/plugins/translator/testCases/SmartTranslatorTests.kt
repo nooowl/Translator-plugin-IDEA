@@ -8,12 +8,12 @@ import ru.itmo.plugins.translator.testFramework.extensions.shouldBe
 
 @RunWith(Parameterized::class)
 class SmartTranslatorTests(
-        private val name: String,
+        private val code: String,
         private val expected: String) : BaseTest() {
 
     @Test
     fun testSmartTranslation() {
-        smartCodeTranslator.translate(name) shouldBe expected
+        smartCodeTranslator.translateCode(code) shouldBe expected
     }
 
     companion object {
