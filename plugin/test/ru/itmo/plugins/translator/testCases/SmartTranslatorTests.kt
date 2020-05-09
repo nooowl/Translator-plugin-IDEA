@@ -13,6 +13,7 @@ class SmartTranslatorTests(
 
     @Test
     fun testSmartTranslation() {
+        logger.info("Translate $code")
         smartCodeTranslator.translateCode(code) shouldBe expected
     }
 
@@ -23,10 +24,19 @@ class SmartTranslatorTests(
             return arrayListOf(
                     arrayOf("ПёсМышьКот", "DogMouseCat"),
                     arrayOf("пёс_кот_мышь", "dog_cat_mouse"),
-                    arrayOf("САМОЛЕт", "Plane"),
+                    arrayOf("МЫШь", "Mouse"),
+                    arrayOf("МЫШЬ", "MOUSE"),
+                    arrayOf("Мышь", "Mouse"),
+                    arrayOf("пёсПёс_пёс_Пёс_ПЁС___ПЁсБОЛЬШОЙ_МЫШЬ", "dogDog_dog_Dog_DOG___DogLARGE_MOUSE"),
+                    arrayOf("самолет", "plane"),
+                    arrayOf("САМОлет", "Plane"),
                     arrayOf("САМОЛЕТ", "PLANE"),
-                    arrayOf("Самолет", "Plane"),
-                    arrayOf("пёсПёс_пёс_Пёс_ПЁС___ПЁсБОЛЬШОЙ_МЫШЬ", "dogDog_dog_Dog_DOG___DogBIG_MOUSE")
+                    arrayOf("чернобелый", "blackAndWhite"),
+                    arrayOf("ЧЕРнобелый", "BlackAndWhite"),
+                    arrayOf("ЧЕРНОБЕЛЫЙ", "BLACK_AND_WHITE"),
+                    arrayOf("самообучение", "selfStudy"),
+                    arrayOf("САмообучение", "SelfStudy"),
+                    arrayOf("САМООБУЧЕНИЕ", "SELF_STUDY")
             )
         }
     }
