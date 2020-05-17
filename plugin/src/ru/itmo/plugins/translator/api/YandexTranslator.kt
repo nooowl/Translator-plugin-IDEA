@@ -17,4 +17,9 @@ interface YandexTranslator {
      * @param newKey new API key
      */
     fun updateApiKey(newKey: String)
+
+    /**
+     * @return current API key value
+     */
+    fun getApiKey(): String
 }

@@ -1,5 +1,6 @@
 package ru.itmo.plugins.translator.services
 
+import ru.itmo.plugins.translator.api.YandexTranslator
 import ru.itmo.plugins.translator.api.YandexTranslatorImpl
 import ru.itmo.plugins.translator.constants.YANDEX_API_KEY
 import ru.itmo.plugins.translator.source.SmartCodeTranslator
@@ -17,6 +18,9 @@ class PluginService private constructor() {
         }
     }
 
-    val smartTranslator: SmartCodeTranslator = SmartCodeTranslatorImpl(
-            YandexTranslatorImpl(YANDEX_API_KEY))
+    var defaultLanguage: String = ""
+
+    val yandexTranslator: YandexTranslator = YandexTranslatorImpl(YANDEX_API_KEY)
+
+    val smartTranslator: SmartCodeTranslator = SmartCodeTranslatorImpl(yandexTranslator)
 }
