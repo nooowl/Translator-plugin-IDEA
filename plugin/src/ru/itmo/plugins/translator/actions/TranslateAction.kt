@@ -34,7 +34,7 @@ class TranslateAction : AnAction() {
 
         val textField = JTextField()
         val languageDialog = createLanguageDialog(textField)
-        val targetLanguage: String
+        var targetLanguage: String
         val isOk = languageDialog.show() == DialogWrapper.OK_EXIT_CODE
         if (isOk) {
             targetLanguage = textField.text
@@ -46,14 +46,15 @@ class TranslateAction : AnAction() {
         val originalName = psiNamedElem.name!!
         val translatedName: String
         try {
-            translatedName = PluginService.getInstance()
-                    .smartTranslator.translateCode(originalName, targetLanguage)
+            val service = PluginService.getInstance()
+            translatedName = service.smartTranslator
+                    .translateCode(originalName, targetLanguage)
         } catch (ex: IOException) {
             if (ex.message!!.split("http")[0].contains("400"))
-                createWaring("There are no language: '$targetLanguage'. Use short language form")
+                createWarning("There are no language: '$targetLanguage'. Use short language form")
                         .showInCenterOf(editor.component)
             else
-                createWaring("Please, set correct 'yandexApiKey' in Settings->Translator Plugin Configuration")
+                createWarning("Please, set correct 'yandexApiKey' in Settings->Translator Plugin Configuration")
                         .showInCenterOf(editor.component)
             return
         }
@@ -61,7 +62,7 @@ class TranslateAction : AnAction() {
         RenameDialog(project, psiNamedElem, psiNamedElem, editor).performRename(translatedName)
     }
 
-    private fun createWaring(text: String): Balloon =
+    private fun createWarning(text: String): Balloon =
             JBPopupFactory.getInstance()
                     .createHtmlTextBalloonBuilder(
                             text,
@@ -84,6 +85,7 @@ class TranslateAction : AnAction() {
         textField.isEditable = true
         textField.isEnabled = true
         textField.horizontalAlignment = 10
+        textField.text = PluginService.getInstance().defaultLanguage
         rootPanel.add(textField, GridConstraints(0, 1, 1, 1,
                 GridConstraints.ANCHOR_NORTH, GridConstraints.FILL_HORIZONTAL,
                 GridConstraints.SIZEPOLICY_CAN_SHRINK or GridConstraints.SIZEPOLICY_WANT_GROW,

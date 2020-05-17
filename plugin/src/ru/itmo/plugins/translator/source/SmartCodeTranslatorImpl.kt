@@ -7,14 +7,14 @@ import ru.itmo.plugins.translator.utlis.isUpper
 import ru.itmo.plugins.translator.utlis.set
 
 class SmartCodeTranslatorImpl(
-        val yandexTranslator: YandexTranslator = YandexTranslatorImpl())
+        private val yandexTranslator: YandexTranslator = YandexTranslatorImpl())
     : SmartCodeTranslator {
 
     override fun translateCode(code: String, lang: String): String {
         val words = smartSplit(code)
         val translatedWords = words.map { s ->
             when {
-                s.isEmpty() || s == "_" -> s
+                s.isEmpty() || s == "_" || (s.length == 1 && s[0].isDigit()) -> s
                 else -> smartTranslate(lang, s)
             }
         }
@@ -28,7 +28,9 @@ class SmartCodeTranslatorImpl(
         val sb: StringBuilder = StringBuilder()
         for (i in 0..text.length - 2) {
             sb.append(text[i])
-            if (text[i].isLowerCase() && text[i + 1].isUpperCase() || text[i + 1] == '_' || text[i] == '_') {
+            if (text[i].isLowerCase() && text[i + 1].isUpperCase()
+                    || text[i + 1] == '_' || text[i] == '_'
+                    || text[i + 1].isDigit() || text[i].isDigit()) {
                 words.add(sb.toString())
                 sb.clear()
             }
