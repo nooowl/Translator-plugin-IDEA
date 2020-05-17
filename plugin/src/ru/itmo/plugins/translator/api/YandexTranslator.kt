@@ -11,4 +11,10 @@ interface YandexTranslator {
      * @return translated text
      */
     fun translate(language: String, text: String): String
+
+    /**
+     * Update API key with passed value
+     * @param newKey new API key
+     */
+    fun updateApiKey(newKey: String)
 }

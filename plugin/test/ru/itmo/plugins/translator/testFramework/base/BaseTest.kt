@@ -1,7 +1,5 @@
 package ru.itmo.plugins.translator.testFramework.base
 
-import org.junit.AfterClass
-import org.junit.BeforeClass
 import ru.itmo.plugins.translator.api.YandexTranslator
 import ru.itmo.plugins.translator.api.YandexTranslatorImpl
 import ru.itmo.plugins.translator.constants.YANDEX_API_KEY
