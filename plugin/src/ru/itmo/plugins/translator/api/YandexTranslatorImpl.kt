@@ -1,6 +1,7 @@
 package ru.itmo.plugins.translator.api
 
 import com.google.gson.Gson
+import java.io.IOException
 import java.io.FileInputStream
 import java.net.HttpURLConnection
 import java.net.URL
@@ -14,14 +15,24 @@ class YandexTranslatorImpl(
 
     init {
         if (apiKey.isEmpty()) {
-            apiKey = System.getenv("yandexApiKey")
+            try {
+                apiKey = System.getenv("yandexApiKey")
+            } catch (ignored: Exception) {
+                // No operations.
+            }
         }
     }
 
     override fun translate(language: String, text: String): String {
         val requestURL = createRequestURL(mapOf("lang" to language, "text" to text))
-        val response = parseJson(sendRequestAndGetResponse(requestURL))
-        return response.text.first()
+        var response: String
+        response = sendRequestAndGetResponse(requestURL)
+        val parsedResponse = parseJson(response)
+        return parsedResponse.text.first()
+    }
+
+    override fun updateApiKey(newKey: String) {
+        apiKey = newKey
     }
 
     private fun parseJson(text: String): TranslatorResponse {
