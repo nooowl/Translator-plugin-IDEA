@@ -10,20 +10,11 @@ import com.intellij.psi.PsiDocumentManager
 import com.intellij.psi.PsiNamedElement
 import com.intellij.refactoring.actions.BaseRefactoringAction.getPsiElementArray
 import com.intellij.refactoring.rename.RenameDialog
-import com.intellij.ui.awt.RelativePoint
-import ru.itmo.plugins.translator.api.YandexTranslatorImpl
-import ru.itmo.plugins.translator.constants.YANDEX_API_KEY
-import ru.itmo.plugins.translator.source.SmartCodeTranslator
-import ru.itmo.plugins.translator.source.SmartCodeTranslatorImpl
-import java.awt.MouseInfo
+import ru.itmo.plugins.translator.services.PluginService
 import java.io.IOException
 
 
 class TranslateAction : AnAction() {
-    private val smartTranslator: SmartCodeTranslator = SmartCodeTranslatorImpl(
-            YandexTranslatorImpl(YANDEX_API_KEY + "32")
-    )
-
     override fun actionPerformed(e: AnActionEvent) {
         val project = e.project ?: return
         val dataContext = e.dataContext
@@ -35,7 +26,8 @@ class TranslateAction : AnAction() {
         val originalName = psiNamedElem.name!!
         val translatedName: String
         try {
-            translatedName = smartTranslator.translateCode(originalName)
+            translatedName = PluginService.getInstance()
+                    .smartTranslator.translateCode(originalName)
         } catch (ignored: IOException) {
             val warning = JBPopupFactory.getInstance()
                     .createHtmlTextBalloonBuilder(
