@@ -31,6 +31,10 @@ class YandexTranslatorImpl(
         apiKey = newKey
     }
 
+    override fun getApiKey(): String {
+        return apiKey
+    }
+
     private fun parseJson(text: String): TranslatorResponse {
         return Gson().fromJson(text, TranslatorResponse::class.java)
     }
