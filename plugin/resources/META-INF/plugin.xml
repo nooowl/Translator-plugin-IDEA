@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>ru.itmo.plugins.translator</id>
     <name>Translator IDEA</name>
-    <version>2.2</version>
+    <version>3.0</version>
     <vendor email="dogandmouse@ourcompany.com" url="http://www.dogandmousecompany.com">DogAndMouseCompany</vendor>
 
     <description><![CDATA[

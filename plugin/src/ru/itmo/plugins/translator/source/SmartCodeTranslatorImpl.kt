@@ -7,7 +7,7 @@ import ru.itmo.plugins.translator.utlis.isUpper
 import ru.itmo.plugins.translator.utlis.set
 
 class SmartCodeTranslatorImpl(
-        val yandexTranslator: YandexTranslator = YandexTranslatorImpl())
+        private val yandexTranslator: YandexTranslator = YandexTranslatorImpl())
     : SmartCodeTranslator {
 
     override fun translateCode(code: String, lang: String): String {
