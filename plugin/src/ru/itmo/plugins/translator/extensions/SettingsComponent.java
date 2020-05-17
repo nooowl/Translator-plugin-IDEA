@@ -48,7 +48,7 @@ public class SettingsComponent {
         textField.setHorizontalAlignment(10);
         rootPanel.add(textField, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_NORTH, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         final JLabel label2 = new JLabel();
-        String label2text = "Enter you yandex api key" + (defaultApiKey.isEmpty() ? "" : " (current = " + defaultApiKey + ")");
+        String label2text = "Enter you yandex api key" + (defaultApiKey == null || defaultApiKey.isEmpty() ? "" : " (current = " + defaultApiKey + ")");
         label2.setText(label2text);
         label2.setVerticalAlignment(0);
         rootPanel.add(label2, new GridConstraints(1, 1, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
