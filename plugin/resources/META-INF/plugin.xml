@@ -24,6 +24,7 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
+        <applicationConfigurable implementation="ru.itmo.plugins.translator.extensions.PluginConfigurationPage"/>
     </extensions>
 
     <actions>

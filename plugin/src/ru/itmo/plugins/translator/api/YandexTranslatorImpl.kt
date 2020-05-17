@@ -1,8 +1,6 @@
 package ru.itmo.plugins.translator.api
 
 import com.google.gson.Gson
-import java.io.IOException
-import java.io.FileInputStream
 import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLEncoder
@@ -24,8 +22,7 @@ class YandexTranslatorImpl(
 
     override fun translate(language: String, text: String): String {
         val requestURL = createRequestURL(mapOf("lang" to language, "text" to text))
-        var response: String
-        response = sendRequestAndGetResponse(requestURL)
+        val response = sendRequestAndGetResponse(requestURL)
         val parsedResponse = parseJson(response)
         return parsedResponse.text.first()
     }
