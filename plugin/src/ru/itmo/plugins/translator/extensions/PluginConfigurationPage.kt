@@ -22,6 +22,6 @@ class PluginConfigurationPage : Configurable {
 
     override fun createComponent(): JComponent? {
         component = SettingsComponent(yandexApiKey)
-        return component!!.`$$$getRootComponent$$$`()
+        return component!!.getRootComponent()
     }
 }
