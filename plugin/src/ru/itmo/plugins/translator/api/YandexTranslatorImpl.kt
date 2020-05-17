@@ -1,11 +1,9 @@
 package ru.itmo.plugins.translator.api
 
 import com.google.gson.Gson
-import java.io.FileInputStream
 import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLEncoder
-import java.util.*
 
 class YandexTranslatorImpl(
         private var apiKey: String = ""
