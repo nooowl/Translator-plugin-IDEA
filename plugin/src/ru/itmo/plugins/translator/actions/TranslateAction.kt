@@ -50,10 +50,10 @@ class TranslateAction : AnAction() {
                     .smartTranslator.translateCode(originalName, targetLanguage)
         } catch (ex: IOException) {
             if (ex.message!!.split("http")[0].contains("400"))
-                createWaring("There are no language: '$targetLanguage'. Use short language form")
+                createWarning("There are no language: '$targetLanguage'. Use short language form")
                         .showInCenterOf(editor.component)
             else
-                createWaring("Please, set correct 'yandexApiKey' in Settings->Translator Plugin Configuration")
+                createWarning("Please, set correct 'yandexApiKey' in Settings->Translator Plugin Configuration")
                         .showInCenterOf(editor.component)
             return
         }
@@ -61,7 +61,7 @@ class TranslateAction : AnAction() {
         RenameDialog(project, psiNamedElem, psiNamedElem, editor).performRename(translatedName)
     }
 
-    private fun createWaring(text: String): Balloon =
+    private fun createWarning(text: String): Balloon =
             JBPopupFactory.getInstance()
                     .createHtmlTextBalloonBuilder(
                             text,
